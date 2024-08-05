@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-08-03T09:55:34+03:30">2024-08-03T09:55:34+03:30</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-08-05T09:19:35+03:30">2024-08-05T09:19:35+03:30</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -29,8 +29,8 @@
      </span>
      covered at
      <span class="covered_strength">
-       <span class="yellow">
-         1.0
+       <span class="green">
+         1.35
        </span>
     </span> hits/line
     )
@@ -73,11 +73,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#20007372cdc2b751ea3eb1b13653faccbdf285a4" class="src_link" title="app/controllers/api/v1/people_controller.rb">app/controllers/api/v1/people_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">12</td>
+            <td class="cell--number">31</td>
             <td class="cell--number">4</td>
             <td class="cell--number">4</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.00</td>
+            <td class="cell--number">5.50</td>
             
           </tr>
         
@@ -241,7 +241,7 @@
 
             
 
-            <code class="ruby">  def generate</code>
+            <code class="ruby">  def show</code>
           </li>
         </div>
       
@@ -257,8 +257,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="4">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="10" data-linenumber="4">
+            <span class="hits">10</span>
             
 
             
@@ -274,7 +274,7 @@
 
             
 
-            <code class="ruby">      email:Faker::Internet.email,</code>
+            <code class="ruby">      email: Faker::Internet.email,</code>
           </li>
         </div>
       
@@ -285,7 +285,7 @@
 
             
 
-            <code class="ruby">      address:Faker::Address.full_address,</code>
+            <code class="ruby">      address: {</code>
           </li>
         </div>
       
@@ -296,7 +296,7 @@
 
             
 
-            <code class="ruby">      phone:Faker::PhoneNumber.phone_number,</code>
+            <code class="ruby">        street: Faker::Address.street_address,</code>
           </li>
         </div>
       
@@ -307,7 +307,7 @@
 
             
 
-            <code class="ruby">      date_of_birth: Faker::Date.birthday(min_age:18,max_age:65),</code>
+            <code class="ruby">        city: Faker::Address.city,</code>
           </li>
         </div>
       
@@ -318,18 +318,18 @@
 
             
 
-            <code class="ruby">    }</code>
+            <code class="ruby">        state: Faker::Address.state,</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="10">
+            
             
 
             
 
-            <code class="ruby">    render json: {data: person}, status: :ok</code>
+            <code class="ruby">        country: Faker::Address.country,</code>
           </li>
         </div>
       
@@ -340,12 +340,221 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">        zip_code: Faker::Address.zip_code</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby">      },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="13">
+            
+            
+
+            
+
+            <code class="ruby">      phone: Faker::PhoneNumber.phone_number,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="14">
+            
+            
+
+            
+
+            <code class="ruby">      job: Faker::Job.title,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby">      company: {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="16">
+            
+            
+
+            
+
+            <code class="ruby">        name: Faker::Company.name,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">        industry: Faker::Company.industry</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby">      },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="19">
+            
+            
+
+            
+
+            <code class="ruby">      social_media: {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="20">
+            
+            
+
+            
+
+            <code class="ruby">        twitter: Faker::Internet.username(specifier: &#39;twitter&#39;),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="21">
+            
+            
+
+            
+
+            <code class="ruby">        linkedin: Faker::Internet.username(specifier: &#39;linkedin&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby">      },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
+            <code class="ruby">      date_of_birth: Faker::Date.birthday(min_age: 18, max_age: 65),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="24">
+            
+            
+
+            
+
+            <code class="ruby">      credit_card: {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby">        number: Faker::Finance.credit_card,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="26">
+            
+            
+
+            
+
+            <code class="ruby">        expiry_date: Faker::Business.credit_card_expiry_date</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby">      }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby">    }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="10" data-linenumber="29">
+            <span class="hits">10</span>
+            
+
+            
+
+            <code class="ruby">    render json: { data: person }, status: :ok</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
             
             
 
@@ -2478,7 +2687,7 @@
 
             
 
-            <code class="ruby">      get &quot;generate&quot;, to: &quot;people#generate&quot;</code>
+            <code class="ruby">      get &quot;person&quot;, to: &quot;people#show&quot;</code>
           </li>
         </div>
       
