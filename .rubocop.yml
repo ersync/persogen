@@ -1,1 +1,48 @@
-inherit_from: .rubocop_todo.yml
+# .rubocop.yml
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+
+# Rail specific settings
+Rails:
+  Enabled: true
+
+# RSpec specific settings
+RSpec:
+  Enabled: true
+
+# Style configurations
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Metrics configurations
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'config/**/*'
+
+Metrics/MethodLength:
+  Max: 15
+
+# Layout configurations
+Layout/LineLength:
+  Max: 120
+
+# Disable certain cops that might be too restrictive for your project
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# You can add more customizations here based on your preferences
