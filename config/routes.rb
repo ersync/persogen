@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get "person", to: "people#show"
+      get "people", to: "people#index"
     end
+
   end
   # Defines the root path route ("/")
   # root "posts#index"
