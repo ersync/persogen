@@ -7,3 +7,6 @@ db/schema.rb linguist-generated
 vendor/* linguist-vendored
 config/credentials/*.yml.enc diff=rails_credentials
 config/credentials.yml.enc diff=rails_credentials
+
+# Exclude SimpleCov coverage reports from language statistics
+coverage/* linguist-vendored
