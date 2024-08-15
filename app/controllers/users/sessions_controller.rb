@@ -1,28 +1,38 @@
-# frozen_string_literal: true
-
 class Users::SessionsController < Devise::SessionsController
   respond_to :json
-  # before_action :configure_sign_in_params, only: [:create]
 
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  private
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def respond_with(resource, _opts = {})
+    render_json_response(
+      status_code: 200,
+      message: 'User logged in successfully.',
+      data: serialized_user(resource)
+    )
+  end
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def respond_to_on_destroy
+    if current_user
+      render_json_response(
+        status_code: 200,
+        message: "User logged out successfully."
+      )
+    else
+      render_json_response(
+        status_code: 401,
+        message: "Couldn't find an active session.",
+        status: :unauthorized
+      )
+    end
+  end
 
-  # protected
+  def render_json_response(status_code:, message:, data: nil, status: :ok)
+    response = { status: { code: status_code, message: message } }
+    response[:data] = data if data
+    render json: response, status: status
+  end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+  def serialized_user(user)
+    UserSerializer.new(user).serializable_hash[:data][:attributes]
+  end
 end
