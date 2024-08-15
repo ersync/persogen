@@ -33,4 +33,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       status: { code: 422, message: "Error: user couldn't be created successfully. #{resource.errors.full_messages.to_sentence}" }
     }, status: :unprocessable_entity
   end
+
+  def sign_up_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
 end
