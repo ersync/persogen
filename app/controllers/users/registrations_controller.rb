@@ -4,34 +4,42 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def respond_with(resource, _opts = {})
-    if request.post? && resource.persisted?
-      render_successful_signup(resource)
-    elsif request.post?
-      render_failed_signup(resource)
-    elsif request.delete?
-      render_successful_deletion
-    else
-      render_failed_signup(resource)
+    case request.method
+    when 'POST'   then handle_post(resource)
+    when 'DELETE' then handle_delete
+    when 'PATCH' then handle_update(resource)
+    else render_error(resource)
     end
   end
 
-  def render_successful_signup(resource)
-    render json: {
-      status: { code: 200, message: 'Sign up successful. New user created.' },
-      data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
-    }, status: :ok
+  def handle_post(resource)
+    resource.persisted? ? render_success(resource, 'Sign up successful.') : render_error(resource)
   end
 
-  def render_successful_deletion
-    render json: {
-      status: { code: 200, message: 'Account deleted successfully.' }
-    }, status: :ok
+  def handle_delete
+    render_json(200, 'Account deleted successfully.')
   end
 
-  def render_failed_signup(resource)
+  def handle_update(resource)
+    resource.errors.empty? ? render_success(resource, 'User updated successfully.') : render_error(resource)
+  end
+
+  def render_success(resource, message)
+    render_json(200, message, UserSerializer.new(resource).serializable_hash[:data][:attributes])
+  end
+
+  def render_error(resource)
+    errors = resource.errors.messages.transform_values(&:uniq)
     render json: {
-      status: { code: 422, message: "Error: user couldn't be created successfully. #{resource.errors.full_messages.to_sentence}" }
+      status: { code: 422, message: 'Validation failed' },
+      errors:
     }, status: :unprocessable_entity
+  end
+
+  def render_json(code, message, data = nil)
+    response = { status: { code:, message: } }
+    response[:data] = data if data
+    render json: response, status: code == 200 ? :ok : :unprocessable_entity
   end
 
   def sign_up_params
