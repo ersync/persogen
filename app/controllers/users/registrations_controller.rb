@@ -21,7 +21,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def handle_update(resource)
-    resource.errors.empty? ? render_success(resource, 'User updated successfully.') : render_error(resource)
+    if resource.update_with_password(account_update_params)
+      render_success(resource, 'User updated successfully.')
+    else
+      render_error(resource)
+    end
   end
 
   def render_success(resource, message)
@@ -44,5 +48,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def sign_up_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def account_update_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
   end
 end
