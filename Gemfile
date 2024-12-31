@@ -41,11 +41,11 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'byebug'
   gem 'debug', platforms: %i[mri windows]
   gem 'dotenv-rails'
   gem 'faker'
   gem 'rspec-rails'
-  gem 'byebug'
 end
 
 group :development do
@@ -57,6 +57,6 @@ group :development do
 end
 
 group :test do
-  gem 'simplecov'
   gem 'factory_bot_rails'
+  gem 'simplecov'
 end
