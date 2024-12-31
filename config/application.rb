@@ -20,6 +20,7 @@ Bundler.require(*Rails.groups)
 
 module Persogen
   class Application < Rails::Application
+    VERSION = '1.0.0'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 

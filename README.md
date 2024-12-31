@@ -1,5 +1,9 @@
 # Persogen  
-**Generate Mock Person Data Effortlessly**  
+
+![Version](https://img.shields.io/badge/version-0.0.1-lightgreen)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/8MamMcAVAVNWTcUqkjQk7R/PfirDRh5ea4LigCP4kC27B/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/8MamMcAVAVNWTcUqkjQk7R/PfirDRh5ea4LigCP4kC27B/tree/main)
+![Test Coverage: 100%](https://img.shields.io/badge/Test%20Coverage-100%25-brightgreen)
+[![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 Persogen is a **Rails-based API** designed to help developers create realistic mock profiles for testing and development. It’s secure, straightforward, and tailored to make your workflow smoother.  
 
@@ -156,14 +160,16 @@ bundle exec rspec
 - Profile generation endpoints  
 - Error scenarios  
 
+**Coverage & CI:**
+- SimpleCov for test coverage tracking
+- CircleCI for continuous integration
+
 ---
 
 ## Roadmap  
 
-What’s next for Persogen?  
 
 - Docker support  
-- CircleCI for continuous integration  
 - Customizable profile fields  
 - Export profiles to JSON/CSV  
 - Swagger-based API documentation  
