@@ -5,27 +5,27 @@ jobs:
   test-ruby:
     docker:
       - image: cimg/ruby:3.3.4-node
-      - image: circleci/postgres:9.5-alpine
+      - image: cimg/postgres:14.2
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: persogen_test
     environment:
       RAILS_ENV: test
+      PGHOST: 127.0.0.1
+      POSTGRES_USER: postgres
     steps:
       - checkout
-      - ruby/install-deps:
-          bundler-version: 2.4.18
+      - ruby/install-deps
       - run:
-          name: Set up database configuration
-          command: cp config/database.yml.ci config/database.yml
-      - run:
-          name: wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+          name: Wait for Postgres
+          command: |
+            dockerize -wait tcp://127.0.0.1:5432 -timeout 30s
       - run:
           name: Database setup
           command: |
-            bundle exec rake db:create
-            bundle exec rake db:migrate
-            bundle exec rake db:test:prepare
+            bundle exec rails db:setup
       - run:
-          name: rspec test
+          name: Run tests
           command: bundle exec rspec
 workflows:
   build-and-test:
